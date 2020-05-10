@@ -6,12 +6,12 @@ import styled from "@emotion/styled";
 
 const Home: React.FC = ({}) => {
   const style = css`
-    color: hotpink;
+    color: red;
   `;
 
   const StyledP = styled.p`
     color: red;
-    font-size: 30px;
+    font-size: 1rem;
   `;
 
   return (
@@ -25,8 +25,13 @@ const Home: React.FC = ({}) => {
           <StyledP>hoge</StyledP>
         </li>
         <li>
-          <Link href="/react-spring">
-            <a>react-spring</a>
+          <Link href="/works">
+            <a>Works</a>
+          </Link>
+        </li>
+        <li>
+          <Link href="/title-and-introduction">
+            <a>Title and Introduction</a>
           </Link>
         </li>
       </ul>
