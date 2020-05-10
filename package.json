@@ -1,0 +1,28 @@
+{
+  "name": "spike-next-js",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "ssh://git@github.com/G-Shino/spike-next-js.git",
+  "author": "G-shino <shinogu2929@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@emotion/core": "^10.0.28",
+    "@emotion/styled": "^10.0.27",
+    "babel-plugin-emotion": "^10.0.33",
+    "next": "^9.3.6",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@emotion/babel-preset-css-prop": "^10.0.27",
+    "@types/node": "^13.13.5",
+    "@types/react": "^16.9.34",
+    "typescript": "^3.8.3"
+  }
+}
