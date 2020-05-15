@@ -262,6 +262,9 @@ export const Works: React.FC<FileInputProps> = ({}) => {
         <Link href="/title-and-introduction">
           <StyledHomeButton>Home</StyledHomeButton>
         </Link>
+        <Link href="/heejunscene">
+          <StyledHomeButton>three</StyledHomeButton>
+        </Link>
       </AreaCDiv>
     </WrapperDiv>
   );
