@@ -1,19 +1,12 @@
 import React, { Suspense } from "react";
-import { Canvas, useLoader } from "react-three-fiber"; //threejsをReactで使うためのモジュール
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"; //threejsでおなじみのアレ
+import { Canvas } from "react-three-fiber"; //threejsをReactで使うためのモジュール
 import styled from "@emotion/styled";
-import { Controls } from "./orbit"; //orbitControlsのReact-three-fiber実装,これのコピペ＝＞https://qiita.com/Quarter-lab/items/151f06bddea1fc9cf4d7
+import { Controls } from "../components/orbit"; //orbitControlsのReact-three-fiber実装,これのコピペ＝＞https://qiita.com/Quarter-lab/items/151f06bddea1fc9cf4d7
 import Link from "next/link";
+import { LoadedObject } from "../components/loadgltf";
+import { Color } from "../constants/Color";
 
 const ChairScene = () => {
-  const LoadedObject = () => {
-    const gltf = useLoader(GLTFLoader, "./chair.glb");
-    return (
-      <primitive object={gltf.scene} position={[0, 0, 0]} dispose={null} />
-    );
-  };
-  //publicフォルダーからchair.glbをロード。importでコンパイル時にあらかじめglbファイルを取り込みたかったけど、それだとなぜか上手くいかなかった。webpackに何らかの方法でgltfloaderを加えておけば解決するかも
-
   return (
     <ThreePageStyle>
       <CanvasStyle>
@@ -42,6 +35,6 @@ const StyledButton = styled.button``;
 const CanvasStyle = styled.div`
   width: 800px;
   height: 800px;
-  background-color: #363636;
+  background-color: ${Color.BASE_COLOR};
 `;
 export default ChairScene;
