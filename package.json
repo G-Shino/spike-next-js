@@ -20,14 +20,16 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scroll": "^1.7.16",
-    "react-spring": "9.0.0-beta.34"
+    "react-spring": "9.0.0-beta.34",
+    "react-three-fiber": "^4.2.4",
+    "three": "^0.116.1"
   },
   "devDependencies": {
     "@emotion/babel-preset-css-prop": "^10.0.27",
-    "@types/react-scroll": "^1.5.4",
     "@types/d3-ease": "^1.0.9",
     "@types/node": "^13.13.5",
     "@types/react": "^16.9.34",
+    "@types/react-scroll": "^1.5.4",
     "typescript": "^3.8.3"
   }
 }
