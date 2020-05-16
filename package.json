@@ -8,21 +8,24 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next export",
     "start": "next start"
   },
   "dependencies": {
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
+    "@types/three": "^0.103.2",
     "babel-plugin-emotion": "^10.0.33",
     "d3-ease": "^1.0.6",
+    "file-loader": "^6.0.0",
     "next": "^9.3.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scroll": "^1.7.16",
     "react-spring": "9.0.0-beta.34",
     "react-three-fiber": "^4.2.4",
-    "three": "^0.116.1"
+    "three": "^0.116.1",
+    "three-orbitcontrols": "^2.110.3"
   },
   "devDependencies": {
     "@emotion/babel-preset-css-prop": "^10.0.27",
