@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { ReactThreeFiber, extend, useThree, useFrame } from "react-three-fiber";
-import { OrbitControls } from "../threemodules/OrbitControls";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
 extend({ OrbitControls });
 
@@ -17,7 +17,7 @@ type ControlProps = {
   isControl: boolean;
 };
 
-export const Controls: React.FC<ControlProps> = (props) => {
+const Controls: React.FC<ControlProps> = (props) => {
   const controlsRef = useRef<OrbitControls>();
   const { camera, gl } = useThree();
 
@@ -43,3 +43,4 @@ export const Controls: React.FC<ControlProps> = (props) => {
     />
   );
 };
+export default Controls;
