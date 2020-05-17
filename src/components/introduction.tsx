@@ -144,7 +144,6 @@ const Page2S = styled.div`
   grid-template-rows: 40vh 40vh 20vh;
   justify-content: center;
   font-size: 100%;
-  position: relative;
 `;
 const GreetingsS = styled.div`
   grid-template-areas: "japanese . english";

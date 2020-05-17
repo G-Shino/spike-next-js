@@ -6,28 +6,29 @@ import styled from "@emotion/styled";
 import Scroll from "react-scroll";
 
 const TitleAndIntroduction = () => {
-  const [toggle, setToggle] = useState(false);
+  const [toggle, setToggle] = useState(false); //Toggleがtrueならintroduction,falseならtitle画面を表示する。要素が2つしかないからbooleanで制御可能。3つ以上になるとtoggleをintに変える必要あり。
   //スクロール量をとる
   React.useEffect(() => {
     const handleWheelBase = (event: WheelEvent) => {
-      event.preventDefault();
+      //ホイールイベント時に発火
+      event.preventDefault(); //普通のスクロールを抑制する。これにより、スクロールはこのコードの記述のみで制御される。
     };
     document
       .getElementById("title-and-introduction-wrapper")
       ?.addEventListener("wheel", handleWheelBase, false);
   }, []);
   const handleWheel = (event: React.WheelEvent<HTMLDivElement>) => {
-    event.deltaY > 0 ? setToggle(true) : setToggle(false);
+    event.deltaY > 0 ? setToggle(true) : setToggle(false); //下にスクロールしたらtrue,上にスクロールしたらfalse
   };
-  let componentDidMount = 0;
   useEffect(() => {
     setToggle(false);
     setTimeout(() => {
       setToggle(true);
-    }, 5000);
-  }, [componentDidMount]);
-  //この書き方でuseEffectをcomponentDidMountのように使える。つまり、ロード時以外発火しない。
+    }, 5000); //ページロード5秒後に下にスクロールされる。
+  }, []);
+  //この書き方でuseEffectをcomponentDidMountのように使える。つまり、ロード時以外発火しない。最後の[]がポイント。
   useEffect(() => {
+    //toggleの変化によるアクションを指定
     toggle
       ? Scroll.scroller.scrollTo("Page2", {
           duration: 1600,
@@ -53,10 +54,11 @@ const MainDiv = styled.div`
   background-color: #f2f2f2;
   color: #363636;
   overflow: hidden;
-  width: 100vw;
-  height: 200vh;
+  width: 100%;
+  height: 200%;
   margin: 0px;
   padding: 0;
+  position: relative;
 `;
 
 export default TitleAndIntroduction;

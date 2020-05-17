@@ -13,7 +13,7 @@ const Controls = dynamic(() => import("../components/orbit"), {
 const LoadedObject = dynamic(() => import("../components/loadgltf"), {
   ssr: false,
 });
-
+//threeのメインモジュール以外(OrbitControlsなど)を扱う場合は必ずdynamicを用いること
 const ChairScene = () => {
   return (
     <ThreePageStyle>
