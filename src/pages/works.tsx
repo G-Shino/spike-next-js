@@ -24,7 +24,7 @@ const DISP_IDX_CENT = 3;
 const BOX_HEIGHT = 100 * 1.2;
 
 //どのくらいのスクロール量で動かすか
-const BORDER_SCROLL = 10;
+const BORDER_SCROLL = 2;
 
 const LIST_IMG_OBJ = [
   { img: "./images/works/Yam.jpg", cont: "先生の言葉" },
@@ -38,16 +38,18 @@ const LIST_IMG_OBJ = [
   { img: "./images/works/Hazuki.jpg", cont: "Hazuki" },
   { img: "./images/works/Fu-min.jpg", cont: "Fumin" },
 ];
+//各作品のコンテンツを表すオブジェクト。今後コンテンツが増えたらここに足していこう。
 
 export const Works: React.FC<FileInputProps> = ({}) => {
-  const [mouseClickIndex, setMouseClickIndex] = React.useState(0);
-  const [flagClick, setFlagClick] = React.useState(false);
-  const [flagResize, setFlagResize] = React.useState(false);
+  const [mouseClickIndex, setMouseClickIndex] = React.useState(0); //マウスがLIST_ING_OBJの何番目の要素をクリックしたかの指標
+  const [flagClick, setFlagClick] = React.useState(false); //クリックアクションのトリガー
+  const [flagResize, setFlagResize] = React.useState(false); //画面リサイズアクションのトリガー
   const [order, setOrder] = React.useState(
+    //LIST_ING_OBJの現在の配列順番
     ELEM_LIST_DUMMY.map((_, index) => index)
   );
-  const [scrollInc, setScrollInc] = React.useState(0);
-  const [coverCont, setCoverCont] = React.useState("");
+  const [scrollInc, setScrollInc] = React.useState(0); //回転するメニューのスクロール量
+  const [coverCont, setCoverCont] = React.useState(""); //LIST_ING_OBJの現在表示するcontを格納する変数
 
   // const spring = useSpring({
   //   opacity: flagClick ? 1 : 0,
@@ -56,7 +58,8 @@ export const Works: React.FC<FileInputProps> = ({}) => {
   //   immediate: (n) => n === "zIndex",
   // });
 
-  //スタイルを作る関数
+  //react-springのuseSpringのスタイルを作る関数
+  //回転メニューの描画を担当する
   const makeStyleConsole = (idx: number) => {
     const curIdx = order.indexOf(idx);
     const y =
@@ -84,7 +87,8 @@ export const Works: React.FC<FileInputProps> = ({}) => {
       immediate: (n: string) => n === "zIndex",
     };
   };
-
+  //react-springのuseSpringのスタイルを作る関数
+  //作品画像パーツ(画面右)の描画を担当する
   const makeStyleMain = (idx: number) => {
     const curIdx = order.indexOf(idx);
     const opacity = curIdx === DISP_IDX_CENT ? 1 : 0;
@@ -113,6 +117,7 @@ export const Works: React.FC<FileInputProps> = ({}) => {
     })
   );
   React.useEffect(() => {
+    //画面リサイズイベント
     setFlagResize(true);
     const listner = () => {
       setFlagResize((state) => !state);
@@ -261,6 +266,9 @@ export const Works: React.FC<FileInputProps> = ({}) => {
       <AreaCDiv>
         <Link href="/title-and-introduction">
           <StyledHomeButton>Home</StyledHomeButton>
+        </Link>
+        <Link href="/heejunscene">
+          <StyledHomeButton>three</StyledHomeButton>
         </Link>
       </AreaCDiv>
     </WrapperDiv>
