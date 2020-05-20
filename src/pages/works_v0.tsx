@@ -147,7 +147,7 @@ export const Works: React.FC<FileInputProps> = ({}) => {
   React.useEffect(() => {
     const handleWheelBase = (event: WheelEvent) => {
       event.preventDefault();
-      console.log(event.deltaY)
+      console.log(event.deltaY);
       if (event.deltaY < -100) {
         setScrollInc((state: number) => {
           return state + 3;

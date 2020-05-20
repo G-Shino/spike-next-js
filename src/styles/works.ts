@@ -21,7 +21,6 @@ const StyledContainerArea = styled.div`
   display: grid;
   grid-template-columns: 1fr auto;
   grid-template-areas: "LeftSideArea RightSideArea";
-  /* background-color: rgba(100, 100, 0, 0.5); */
 `;
 
 const StyledLeftSideArea = styled.div`
@@ -29,11 +28,10 @@ const StyledLeftSideArea = styled.div`
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-rows: 1fr auto;
+  grid-template-rows: auto 1fr;
   grid-template-areas:
     "DiaLogArea"
     "ConsoleArea";
-  /* background-color: rgb(100, 50, 0); */
 `;
 
 const StyledDiaLogArea = styled.div`
@@ -46,8 +44,64 @@ const StyledDiaLogArea = styled.div`
 `;
 
 const StyledDiaLog = styled.img`
-  width: 100px;
-  height: 100px;
+  width: 90px;
+  height: 90px;
+`;
+
+const StyledConsoleArea = styled.div`
+  grid-area: ConsoleArea;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+`;
+
+const StyledConsoleDiv = styled.div`
+  width: 90%;
+  height: 480px;
+  display: grid;
+  grid-template-rows: 40px 400px 40px;
+  grid-template-areas:
+    "UpperButtonArea"
+    "ConsoleImgArea"
+    "LowerButtonArea";
+`;
+
+const StyledUpperButton = styled.button`
+  grid-area: UpperButtonArea;
+  width: 50%;
+  height: 100%;
+  background-color: red;
+`;
+
+const StyledConsoleImgsDiv = styled.div`
+  grid-area: ConsoleImgArea;
+  width: 100%;
+  height: 100%;
+  perspective: 1200px;
+  perspective-origin: left center;
+  display: flex;
+  align-items: center;
+`;
+
+const StyledConsoleImgDiv = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 80px;
+  overflow: hidden;
+  will-change: transform, opacity, z-index;
+`;
+
+const StyledConsoleImg = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
+const StyledLowerButton = styled.button`
+  grid-area: LowerButtonArea;
+  width: 100%;
+  height: 100%;
 `;
 
 const StyledRightSideArea = styled.div`
@@ -74,15 +128,16 @@ const StyledHomeButtonArea = styled.div`
 
 const StyledHomeButton = styled.a`
   font-size: 2.5rem;
+  line-height: 2.5rem;
 `;
 
 const StyledMainPictArea = styled.div`
   grid-area: MainPictArea;
   width: 40vw;
   height: calc(40vw * 1.05);
-  min-width: 450px;
-  min-height: calc(450px * 1.05);
-  margin-right: 100px;
+  min-width: 400px;
+  min-height: calc(400px * 1.05);
+  margin-right: 10vw;
   background-color: red;
 `;
 
@@ -99,6 +154,13 @@ export default {
   StyledLeftSideArea,
   StyledDiaLogArea,
   StyledDiaLog,
+  StyledConsoleArea,
+  StyledConsoleDiv,
+  StyledUpperButton,
+  StyledConsoleImgsDiv,
+  StyledConsoleImgDiv,
+  StyledConsoleImg,
+  StyledLowerButton,
   StyledRightSideArea,
   StyledHomeButtonArea,
   StyledHomeButton,
