@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
-import Router from "next/router";
 import { useSprings, animated } from "react-spring";
-import { clamp } from "../lib/utils";
-import WorksStyles from "../styles/works";
+import { clamp } from "../../lib/utils";
+import WorksStyles from "../../styles/works";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import styled from "@emotion/styled";
@@ -32,59 +31,18 @@ const AnimatedConsoleImgDiv = animated(StyledConsoleImgDiv);
 
 const LIST_IMG_OBJ = [
   // { img: "./images/works/Yam.jpg", cont: "先生の言葉", title: "" },
-  {
-    img: "./images/works/Uena.jpg",
-    author: "Uena",
-    title: "ゆらゆら",
-    link: "/works/uena",
-  },
-  {
-    img: "./images/works/Takuro.jpg",
-    author: "Takuro",
-    title: "Rami S",
-    link: "/works/takuro",
-  },
-  {
-    img: "./images/works/Shinogu.jpg",
-    author: "Shinogu",
-    title: "流点",
-    link: "/works/shinogu",
-  },
-  {
-    img: "./images/works/Oto.jpg",
-    author: "Oto",
-    title: "道具の暇",
-    link: "/works/oto",
-  },
-  {
-    img: "./images/works/Oga.jpg",
-    author: "Oga",
-    title: "Scalable hand",
-    link: "/works/oga",
-  },
-  {
-    img: "./images/works/Kana.jpg",
-    author: "Kana",
-    title: "OTT: OTTOTTO",
-    link: "/works/kana",
-  },
-  {
-    img: "./images/works/Heejun.jpg",
-    author: "Heejun",
-    title: "チタンの家具",
-    link: "/works/heejun",
-  },
-  {
-    img: "./images/works/Hazuki.jpg",
-    author: "Hazuki",
-    title: "長いタイトル",
-    link: "/works/hazuki",
-  },
+  { img: "./images/works/Uena.jpg", author: "Uena", title: "ゆらゆら" },
+  { img: "./images/works/Takuro.jpg", author: "Takuro", title: "Rami S" },
+  { img: "./images/works/Shinogu.jpg", author: "Shinogu", title: "流点" },
+  { img: "./images/works/Oto.jpg", author: "Oto", title: "道具の暇" },
+  { img: "./images/works/Oga.jpg", author: "Oga", title: "Scalable hand" },
+  { img: "./images/works/Kana.jpg", author: "Kana", title: "OTT: OTTOTTO" },
+  { img: "./images/works/Heejun.jpg", author: "Heejun", title: "チタンの家具" },
+  { img: "./images/works/Hazuki.jpg", author: "Hazuki", title: "長いタイトル" },
   {
     img: "./images/works/Fu-min.jpg",
     author: "Fumin",
     title: "Chin & Shoulder Rest",
-    link: "/works/fumin",
   },
 ];
 
@@ -114,7 +72,7 @@ const Works: React.FC = ({}) => {
         ? 0
         : curIdx === DISP_IDX_CENT
         ? 1
-        : 0.2;
+        : 0.4;
     //表示範囲外なら0 表示内先頭と最後は1 それ以外は2
     const zIndex =
       curIdx < DISP_IDX_START || DISP_IDX_END < curIdx
@@ -174,16 +132,6 @@ const Works: React.FC = ({}) => {
     setOrder(curList);
   };
 
-  //クリックで画面遷移
-  const handleClick = (idx: number) => {
-    const curIdx = order.indexOf(idx);
-    if (curIdx !== DISP_IDX_CENT) {
-      return;
-    }
-    const url = LIST_IMG_OBJ[order[DISP_IDX_CENT]].link as string;
-    Router.push(url);
-  };
-
   return (
     <StyledWrapper>
       <Head>
@@ -219,7 +167,6 @@ const Works: React.FC = ({}) => {
                     >
                       <StyledConsoleImg
                         src={LIST_IMG_OBJ[idx].img}
-                        onClick={() => handleClick(idx)}
                       ></StyledConsoleImg>
                     </AnimatedConsoleImgDiv>
                   ))
@@ -239,22 +186,17 @@ const Works: React.FC = ({}) => {
           </StyledHomeButtonArea>
           <StyledMainPictArea>
             <StyledTitleArea>
-              {LIST_IMG_OBJ[order[DISP_IDX_CENT]].title}
+              {LIST_IMG_OBJ[order.indexOf(DISP_IDX_CENT)].title}
             </StyledTitleArea>
             <StyledMainImgArea>
               {mainImgSprings.map((mainImgSpring, idx) => (
                 <AnimatedMainImgDiv key={idx} style={{ ...mainImgSpring }}>
-                  <StyledMainImg
-                    src={LIST_IMG_OBJ[idx].img}
-                    onClick={() => handleClick(idx)}
-                  />
+                  <StyledMainImg src={LIST_IMG_OBJ[idx].img} />
                 </AnimatedMainImgDiv>
               ))}
             </StyledMainImgArea>
             <StyledAuthorArea>
-              <StyledAuthor>
-                制作:{LIST_IMG_OBJ[order[DISP_IDX_CENT]].author}
-              </StyledAuthor>
+              <StyledAuthor>制作</StyledAuthor>
             </StyledAuthorArea>
           </StyledMainPictArea>
           <StyledSendCommentArea>
