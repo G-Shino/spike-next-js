@@ -80,6 +80,12 @@ const StyledUpperButton = styled.button`
   }
 `;
 
+const StyledUpperTriangle = styled.div`
+  border-right: 100px solid transparent;
+  border-bottom: 40px solid black;
+  border-left: 100px solid transparent;
+`;
+
 const StyledConsoleImgsDiv = styled.div`
   grid-area: ConsoleImgArea;
   width: 100%;
@@ -112,6 +118,12 @@ const StyledLowerButton = styled.button`
   &:hover {
     opacity: 1;
   }
+`;
+
+const StyledLowerTriangle = styled.div`
+  border-right: 100px solid transparent;
+  border-top: 40px solid black;
+  border-left: 100px solid transparent;
 `;
 
 const StyledRightSideArea = styled.div`
@@ -164,6 +176,60 @@ const StyledMainPictArea = styled.div`
     "AuthorArea";
 `;
 
+const StyledTitleArea = styled.h1`
+  grid-area: TitleArea;
+  width: auto;
+  height: 100%;
+  line-height: max(4rem, 4vw);
+  font-size: max(3.2rem, 3.2vw);
+  font-weight: normal;
+  vertical-align: top;
+  padding-left: max(5rem, 5vw);
+`;
+const StyledMainImgArea = styled.div`
+  grid-area: MainImgArea;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StyledMainImgDiv = styled.div`
+  position: absolute;
+  width: 28vw;
+  height: 28vw;
+  min-width: 280px;
+  min-height: 280px;
+  /* width: 380px;
+  height: 380px; */
+  border: 1px solid;
+`;
+
+const StyledMainImg = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: center;
+`;
+
+const StyledAuthorArea = styled.div`
+  grid-area: AuthorArea;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+`;
+
+const StyledAuthor = styled.p`
+  width: auto;
+  height: 70%;
+  line-height: max(2rem, 2vw);
+  font-size: max(2rem, 2vw);
+  vertical-align: top;
+  text-align: right;
+  padding-right: max(5rem, 5vw);
+`;
+
 const StyledSendCommentArea = styled.div`
   grid-area: SendCommentArea;
   display: flex;
@@ -180,13 +246,21 @@ export default {
   StyledConsoleArea,
   StyledConsoleDiv,
   StyledUpperButton,
+  StyledUpperTriangle,
   StyledConsoleImgsDiv,
   StyledConsoleImgDiv,
   StyledConsoleImg,
   StyledLowerButton,
+  StyledLowerTriangle,
   StyledRightSideArea,
   StyledHomeButtonArea,
   StyledHomeButton,
   StyledMainPictArea,
+  StyledTitleArea,
+  StyledMainImgArea,
+  StyledMainImgDiv,
+  StyledMainImg,
+  StyledAuthorArea,
+  StyledAuthor,
   StyledSendCommentArea,
 };
