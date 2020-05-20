@@ -85,11 +85,15 @@ const globalCSS = css`
 
   html {
     font-size: 62.5%;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
   }
 
   body {
     /* プロジェクトによって変動 */
     min-width: 1000px;
+    /* max-width: 1500px; */
     color: #000;
     line-height: 1.6;
     font-weight: 400;

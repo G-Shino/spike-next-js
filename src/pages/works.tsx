@@ -30,16 +30,20 @@ const {
 const AnimatedConsoleImgDiv = animated(StyledConsoleImgDiv);
 
 const LIST_IMG_OBJ = [
-  { img: "./images/works/Yam.jpg", cont: "先生の言葉" },
-  { img: "./images/works/Uena.jpg", cont: "Uena" },
-  { img: "./images/works/Takuro.jpg", cont: "Takuro" },
-  { img: "./images/works/Shinogu.jpg", cont: "Shinogu" },
-  { img: "./images/works/Oto.jpg", cont: "Oto" },
-  { img: "./images/works/Oga.jpg", cont: "Oga" },
-  { img: "./images/works/Kana.jpg", cont: "Kana" },
-  { img: "./images/works/Heejun.jpg", cont: "Heejun" },
-  { img: "./images/works/Hazuki.jpg", cont: "Hazuki" },
-  { img: "./images/works/Fu-min.jpg", cont: "Fumin" },
+  // { img: "./images/works/Yam.jpg", cont: "先生の言葉", title: "" },
+  { img: "./images/works/Uena.jpg", author: "Uena", title: "ゆらゆら" },
+  { img: "./images/works/Takuro.jpg", author: "Takuro", title: "Rami S" },
+  { img: "./images/works/Shinogu.jpg", author: "Shinogu", title: "流点" },
+  { img: "./images/works/Oto.jpg", author: "Oto", title: "道具の暇" },
+  { img: "./images/works/Oga.jpg", author: "Oga", title: "Scalable hand" },
+  { img: "./images/works/Kana.jpg", author: "Kana", title: "OTT: OTTOTTO" },
+  { img: "./images/works/Heejun.jpg", author: "Heejun", title: "チタンの家具" },
+  { img: "./images/works/Hazuki.jpg", author: "Hazuki", title: "長いタイトル" },
+  {
+    img: "./images/works/Fu-min.jpg",
+    author: "Fumin",
+    title: "Chin & Shoulder Rest",
+  },
 ];
 
 // 実際の要素数
@@ -181,7 +185,9 @@ const Works: React.FC = ({}) => {
             </Link>
           </StyledHomeButtonArea>
           <StyledMainPictArea>
-            <StyledUpperFrameArea>{}</StyledUpperFrameArea>
+            <StyledTitleArea>
+              {LIST_IMG_OBJ[order.indexOf(DISP_IDX_CENT)].title}
+            </StyledTitleArea>
             <StyledMainImgArea>
               {mainImgSprings.map((mainImgSpring, idx) => (
                 <AnimatedMainImgDiv key={idx} style={{ ...mainImgSpring }}>
@@ -189,7 +195,11 @@ const Works: React.FC = ({}) => {
                 </AnimatedMainImgDiv>
               ))}
             </StyledMainImgArea>
-            <StyledLowerFrameArea></StyledLowerFrameArea>
+            <StyledAuthorArea>
+              <StyledAuthor>
+                制作:{LIST_IMG_OBJ[order.indexOf(DISP_IDX_CENT)].author}
+              </StyledAuthor>
+            </StyledAuthorArea>
           </StyledMainPictArea>
           <StyledSendCommentArea>
             <FontAwesomeIcon icon={faPaperPlane} size="2x" />
@@ -212,10 +222,15 @@ const StyledLowerTriangle = styled.div`
   border-left: 100px solid transparent;
 `;
 
-const StyledUpperFrameArea = styled.div`
-  grid-area: UpperFrameArea;
-  width: 100%;
+const StyledTitleArea = styled.h1`
+  grid-area: TitleArea;
+  width: auto;
   height: 100%;
+  line-height: max(4rem, 4vw);
+  font-size: max(3.2rem, 3.2vw);
+  font-weight: normal;
+  vertical-align: top;
+  padding-left: max(5rem, 5vw);
 `;
 const StyledMainImgArea = styled.div`
   grid-area: MainImgArea;
@@ -244,10 +259,21 @@ const StyledMainImg = styled.img`
   object-fit: center;
 `;
 
-const StyledLowerFrameArea = styled.div`
-  grid-area: LowerFrameArea;
-  width: 100%;
-  height: 100%;
+const StyledAuthorArea = styled.div`
+  grid-area: AuthorArea;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+`;
+
+const StyledAuthor = styled.p`
+  width: auto;
+  height: 70%;
+  line-height: max(2rem, 2vw);
+  font-size: max(2rem, 2vw);
+  vertical-align: top;
+  text-align: right;
+  padding-right: max(5rem, 5vw);
 `;
 
 export default Works;
