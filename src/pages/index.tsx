@@ -34,6 +34,11 @@ const Home: React.FC = ({}) => {
             <a>Title and Introduction</a>
           </Link>
         </li>
+        <li>
+          <Link href="/works-template">
+            <a>Works Template</a>
+          </Link>
+        </li>
       </ul>
     </div>
   );

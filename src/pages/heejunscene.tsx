@@ -33,12 +33,13 @@ const ChairScene = () => {
   //Suspenseは必須、3dデータのロードを管理してくれるらしい。上手くいじるとローディング画面も作れる。
   //Canvasで囲まれてるエレメントがthreejsを表示する窓になっている。
 };
+
 const ThreePageStyle = styled.div`
   display: grid;
   justify-content:center;
   align-content:center;
-}
 `;
+
 const StyledButton = styled.button``;
 const CanvasStyle = styled.div`
   width: 800px;

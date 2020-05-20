@@ -1,6 +1,7 @@
 import { css } from "@emotion/core";
 import { Color } from "./../constants/Color";
 
+//emotion-resetとかに変更した方が良いかもね
 const globalCSS = css`
   html,
   body,
@@ -89,9 +90,9 @@ const globalCSS = css`
     color: #000;
     line-height: 1.6;
     font-weight: 400;
-    font-family: "YuGothic", "Yu Gothic", "游ゴシック", "Meiryo", "メイリオ",
-      "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", -apple-system,
-      BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-family: "Jost", "YuGothic", "Yu Gothic", "游ゴシック", "Meiryo",
+      "メイリオ", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN",
+      -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
     font-size: 1.4rem;
     background-color: ${Color.BASE_COLOR};
     width: 100%;
