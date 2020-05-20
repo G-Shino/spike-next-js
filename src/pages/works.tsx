@@ -93,6 +93,25 @@ const Works: React.FC = ({}) => {
     })
   );
 
+  const makeMainImgStyle = (idx: number) => {
+    const curIdx = order.indexOf(idx);
+    const opacity = curIdx === DISP_IDX_CENT ? 1 : 0;
+    const zIndex = curIdx === DISP_IDX_CENT ? 1 : 0;
+
+    return {
+      opacity,
+      zIndex,
+      immediate: (n: string) => n === "zIndex",
+    };
+  };
+
+  const mainImgSprings = useSprings(
+    ELEM_NUM,
+    ELEM_LIST_DUMMY.map((_, idx) => {
+      return makeMainImgStyle(idx);
+    })
+  );
+
   //配列の先頭を最後尾にする;
   const handleUpper = () => {
     const curList = Array.from(order);
@@ -162,8 +181,14 @@ const Works: React.FC = ({}) => {
             </Link>
           </StyledHomeButtonArea>
           <StyledMainPictArea>
-            <StyledUpperFrameArea></StyledUpperFrameArea>
-            <StyledMainImgArea></StyledMainImgArea>
+            <StyledUpperFrameArea>{}</StyledUpperFrameArea>
+            <StyledMainImgArea>
+              {mainImgSprings.map((mainImgSpring, idx) => (
+                <AnimatedMainImgDiv key={idx} style={{ ...mainImgSpring }}>
+                  <StyledMainImg src={LIST_IMG_OBJ[idx].img} />
+                </AnimatedMainImgDiv>
+              ))}
+            </StyledMainImgArea>
             <StyledLowerFrameArea></StyledLowerFrameArea>
           </StyledMainPictArea>
           <StyledSendCommentArea>
@@ -189,12 +214,40 @@ const StyledLowerTriangle = styled.div`
 
 const StyledUpperFrameArea = styled.div`
   grid-area: UpperFrameArea;
+  width: 100%;
+  height: 100%;
 `;
 const StyledMainImgArea = styled.div`
   grid-area: MainImgArea;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
+
+const StyledMainImgDiv = styled.div`
+  position: absolute;
+  width: 28vw;
+  height: 28vw;
+  min-width: 280px;
+  min-height: 280px;
+  /* width: 380px;
+  height: 380px; */
+  border: 1px solid;
+`;
+const AnimatedMainImgDiv = animated(StyledMainImgDiv);
+const StyledMainImg = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: center;
+`;
+
 const StyledLowerFrameArea = styled.div`
   grid-area: LowerFrameArea;
+  width: 100%;
+  height: 100%;
 `;
 
 export default Works;

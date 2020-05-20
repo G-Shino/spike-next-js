@@ -89,7 +89,7 @@ const globalCSS = css`
 
   body {
     /* プロジェクトによって変動 */
-    min-width: 950px;
+    min-width: 1000px;
     color: #000;
     line-height: 1.6;
     font-weight: 400;

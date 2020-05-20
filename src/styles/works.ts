@@ -149,9 +149,15 @@ const StyledMainPictArea = styled.div`
   height: calc(40vw * 1.05);
   min-width: 400px;
   min-height: calc(400px * 1.05);
-  margin-right: 10vw;
+  /* width: 560px;
+  height: 560px; */
+  margin-right: 20px;
+  background-image: url("./images/title/frame.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
   display: grid;
-  grid-template-rows: 1fr auto 1fr;
+  grid-template-rows: 50px 1fr 50px;
   grid-template-areas:
     "UpperFrameArea"
     "MainImgArea"
