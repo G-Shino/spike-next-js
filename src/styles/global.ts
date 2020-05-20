@@ -1,8 +1,11 @@
 import { css } from "@emotion/core";
 import { Color } from "./../constants/Color";
+import { config, dom } from "@fortawesome/fontawesome-svg-core";
+config.autoAddCss = false;
 
 //emotion-resetとかに変更した方が良いかもね
 const globalCSS = css`
+  ${dom.css()}
   html,
   body,
   div,

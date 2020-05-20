@@ -4,6 +4,9 @@ import Link from "next/link";
 import { useSprings, animated } from "react-spring";
 import { clamp } from "../lib/utils";
 import WorksStyles from "../styles/works";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import styled from "@emotion/styled";
 
 const {
   StyledWrapper,
@@ -118,10 +121,6 @@ const Works: React.FC = ({}) => {
           href="https://fonts.googleapis.com/css2?family=Jost:ital@0;1&display=swap"
           rel="stylesheet"
         ></link>
-        <link
-          href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
-          rel="stylesheet"
-        ></link>
       </Head>
       <StyledContainerArea>
         <StyledLeftSideArea>
@@ -133,7 +132,7 @@ const Works: React.FC = ({}) => {
           <StyledConsoleArea>
             <StyledConsoleDiv>
               <StyledUpperButton onClick={handleUpper}>
-                <i class="fas fa-caret-up"></i>
+                <StyledUpperTriangle />
               </StyledUpperButton>
               <StyledConsoleImgsDiv>
                 {
@@ -150,7 +149,9 @@ const Works: React.FC = ({}) => {
                   ))
                 }
               </StyledConsoleImgsDiv>
-              <StyledLowerButton onClick={handleLower}>sita</StyledLowerButton>
+              <StyledLowerButton onClick={handleLower}>
+                <StyledLowerTriangle />
+              </StyledLowerButton>
             </StyledConsoleDiv>
           </StyledConsoleArea>
         </StyledLeftSideArea>
@@ -160,16 +161,40 @@ const Works: React.FC = ({}) => {
               <StyledHomeButton>HOME</StyledHomeButton>
             </Link>
           </StyledHomeButtonArea>
-          <StyledMainPictArea></StyledMainPictArea>
+          <StyledMainPictArea>
+            <StyledUpperFrameArea></StyledUpperFrameArea>
+            <StyledMainImgArea></StyledMainImgArea>
+            <StyledLowerFrameArea></StyledLowerFrameArea>
+          </StyledMainPictArea>
           <StyledSendCommentArea>
-            <div
-              style={{ height: "40px", width: "40px", backgroundColor: "red" }}
-            ></div>
+            <FontAwesomeIcon icon={faPaperPlane} size="2x" />
           </StyledSendCommentArea>
         </StyledRightSideArea>
       </StyledContainerArea>
     </StyledWrapper>
   );
 };
+
+const StyledUpperTriangle = styled.div`
+  border-right: 100px solid transparent;
+  border-bottom: 40px solid black;
+  border-left: 100px solid transparent;
+`;
+
+const StyledLowerTriangle = styled.div`
+  border-right: 100px solid transparent;
+  border-top: 40px solid black;
+  border-left: 100px solid transparent;
+`;
+
+const StyledUpperFrameArea = styled.div`
+  grid-area: UpperFrameArea;
+`;
+const StyledMainImgArea = styled.div`
+  grid-area: MainImgArea;
+`;
+const StyledLowerFrameArea = styled.div`
+  grid-area: LowerFrameArea;
+`;
 
 export default Works;

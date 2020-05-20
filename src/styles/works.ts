@@ -41,6 +41,9 @@ const StyledDiaLogArea = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const StyledDiaLog = styled.img`
@@ -69,9 +72,12 @@ const StyledConsoleDiv = styled.div`
 
 const StyledUpperButton = styled.button`
   grid-area: UpperButtonArea;
-  width: 50%;
-  height: 100%;
-  background-color: red;
+  width: 200px;
+  height: auto;
+  opacity: 0.5;
+  &:hover {
+    opacity: 1;
+  }
 `;
 
 const StyledConsoleImgsDiv = styled.div`
@@ -100,8 +106,12 @@ const StyledConsoleImg = styled.img`
 
 const StyledLowerButton = styled.button`
   grid-area: LowerButtonArea;
-  width: 100%;
-  height: 100%;
+  width: 200px;
+  height: auto;
+  opacity: 0.5;
+  &:hover {
+    opacity: 1;
+  }
 `;
 
 const StyledRightSideArea = styled.div`
@@ -114,7 +124,6 @@ const StyledRightSideArea = styled.div`
     "HomeButtonArea"
     "MainPictArea"
     "SendCommentArea";
-  /* background-color: rgb(50, 100, 0); */
 `;
 
 const StyledHomeButtonArea = styled.div`
@@ -129,6 +138,9 @@ const StyledHomeButtonArea = styled.div`
 const StyledHomeButton = styled.a`
   font-size: 2.5rem;
   line-height: 2.5rem;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const StyledMainPictArea = styled.div`
@@ -138,7 +150,12 @@ const StyledMainPictArea = styled.div`
   min-width: 400px;
   min-height: calc(400px * 1.05);
   margin-right: 10vw;
-  background-color: red;
+  display: grid;
+  grid-template-rows: 1fr auto 1fr;
+  grid-template-areas:
+    "UpperFrameArea"
+    "MainImgArea"
+    "LowerFrameArea";
 `;
 
 const StyledSendCommentArea = styled.div`
