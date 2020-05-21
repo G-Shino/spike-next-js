@@ -185,6 +185,8 @@ const Works: React.FC = ({}) => {
   //クリックで画面遷移
   const handleClick = (idx: number) => {
     const curIdx = order.indexOf(idx);
+    console.log(idx);
+    console.log(curIdx);
     if (curIdx !== DISP_IDX_CENT) {
       return;
     }
