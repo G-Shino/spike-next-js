@@ -1,11 +1,17 @@
+import { NextPageContext } from "next";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
+import { VehiclePerson } from "../../const/types/VehiclePerson";
 
-export default function Person({ ownersList: initialOwnersList }) {
+export interface PersonProps {
+  ownersList?: VehiclePerson[];
+}
+
+const Person = ({ ownersList: initialOwnersList }: PersonProps) => {
   const router = useRouter();
   const [ownersList, setOwnersList] = useState(initialOwnersList);
   useEffect(() => {
-    if (ownersList.length !== 0) {
+    if (ownersList?.length !== 0) {
       return;
     }
     (async () => {
@@ -21,12 +27,14 @@ export default function Person({ ownersList: initialOwnersList }) {
         method: "POST",
         body: JSON.stringify(bodyJson)
       });
-      const owners = JSON.parse((await response.json()).data);
+      const owners: VehiclePerson[] | undefined = JSON.parse(
+        (await response.json()).data
+      );
       setOwnersList(owners);
     })();
   }, []);
 
-  if (!ownersList[0]) {
+  if (!ownersList?.[0]) {
     return <div>...loading</div>;
   }
 
@@ -36,15 +44,22 @@ export default function Person({ ownersList: initialOwnersList }) {
       {router.query.person}'s {router.query.vehicle}
     </h2>
   );
+};
+
+export default Person;
+
+interface MyNextPageContest extends NextPageContext {
+  query: {
+    person: string;
+    vehicle: string;
+  };
 }
 
-Person.getInitialProps = async ctx => {
-  if (!ctx.req) {
+Person.getInitialProps = async ({ query, req }: MyNextPageContest) => {
+  if (!req) {
     return { ownersList: [] };
   }
 
-  const { query } = ctx;
-  console.log(ctx);
   const data = [
     { ownerName: "bruno", vehicle: "car" },
     { ownerName: "john", vehicle: "bike" },
@@ -55,7 +70,9 @@ Person.getInitialProps = async ctx => {
     method: "POST",
     body: JSON.stringify(bodyJson)
   });
-  const owners = JSON.parse((await response.json()).data);
+  const owners: VehiclePerson[] | undefined = JSON.parse(
+    (await response.json()).data
+  );
 
   return {
     ownersList: owners
