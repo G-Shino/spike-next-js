@@ -1,8 +1,8 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import sqlite from "sqlite";
+import { openDB } from "@src/lib/openDB";
 
 const getPersonById = async (req: NextApiRequest, res: NextApiResponse) => {
-  const db = await sqlite.open("./mydb.sqlite");
+  const db = await openDB();
 
   if (req.method === "PUT") {
     const statement = await db.prepare(
