@@ -10,7 +10,16 @@ export default function MyApp(props) {
 
   console.log("app");
 
-  console.log(CssBaseline);
+  // console.log("CSS Base Line", JSON.stringify(CssBaseline, null, 4));
+
+  // id = jss-server-sideとしてheadにセットされたstyleを削除
+  React.useEffect(() => {
+    // Remove the server-side injected CSS.
+    const jssStyles = document.querySelector("#jss-server-side");
+    if (jssStyles) {
+      jssStyles.parentElement.removeChild(jssStyles);
+    }
+  }, []);
 
   return (
     <React.Fragment>

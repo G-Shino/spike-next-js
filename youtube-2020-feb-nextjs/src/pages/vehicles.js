@@ -8,6 +8,8 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 
+import Button from "@material-ui/core/Button";
+
 const StyledTableCell = withStyles(theme => ({
   head: {
     backgroundColor: theme.palette.primary.main,
@@ -74,7 +76,9 @@ const Vehicles = ({ list }) => {
         </Table>
       </TableContainer>
       <Link href="/">
-        <a>ホーム</a>
+        <a>
+          <Button>home</Button>
+        </a>
       </Link>
     </>
   );

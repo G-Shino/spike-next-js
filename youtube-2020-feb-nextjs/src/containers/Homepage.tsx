@@ -6,7 +6,9 @@ export const HomePage = () => {
     <>
       <h1>Home Page</h1>
       <Link href="/vehicles">
-        <Button>vehicles</Button>
+        <a>
+          <Button>vehicles</Button>
+        </a>
       </Link>
     </>
   );

@@ -2,6 +2,7 @@ import React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import { ServerStyleSheets } from "@material-ui/core/styles";
 import theme from "../theme";
+import { ThemeProvider } from "@material-ui/core/styles";
 
 export default class MyDocument extends Document {
   render() {
@@ -54,6 +55,7 @@ MyDocument.getInitialProps = async ctx => {
   const sheets = new ServerStyleSheets();
   const originalRenderPage = ctx.renderPage;
 
+  // サーバーサイドでスタイルを適用するため
   ctx.renderPage = () =>
     originalRenderPage({
       enhanceApp: App => props => sheets.collect(<App {...props} />)
@@ -61,7 +63,11 @@ MyDocument.getInitialProps = async ctx => {
 
   const initialProps = await Document.getInitialProps(ctx);
 
-  console.log(initialProps);
+  // html, head, stylesを持つ
+  // console.log("initialProps", JSON.stringify(initialProps, null, 4));
+
+  // dangerouslySetInnerHTML type: style, props -> id: jss-server-side
+  // console.log("sheets.getStyleElement()", sheets.getStyleElement());
 
   return {
     ...initialProps,
