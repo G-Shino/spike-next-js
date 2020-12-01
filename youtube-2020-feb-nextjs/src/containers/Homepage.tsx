@@ -5,10 +5,8 @@ export const HomePage = () => {
   return (
     <>
       <h1>Home Page</h1>
-      <Link href="/vehicles">
-        <a>
-          <Button>vehicles</Button>
-        </a>
+      <Link href="/vehicles" passHref>
+        <Button>vehicles</Button>
       </Link>
     </>
   );

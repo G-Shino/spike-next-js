@@ -2,11 +2,10 @@ import React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import { ServerStyleSheets } from "@material-ui/core/styles";
 import theme from "../theme";
-import { ThemeProvider } from "@material-ui/core/styles";
 
 export default class MyDocument extends Document {
   render() {
-    console.log("doc");
+    // console.log("doc");
     return (
       <Html lang="en">
         <Head>

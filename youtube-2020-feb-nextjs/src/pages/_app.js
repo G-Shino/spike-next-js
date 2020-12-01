@@ -8,7 +8,7 @@ import theme from "../theme";
 export default function MyApp(props) {
   const { Component, pageProps } = props;
 
-  console.log("app");
+  // console.log("app");
 
   // console.log("CSS Base Line", JSON.stringify(CssBaseline, null, 4));
 

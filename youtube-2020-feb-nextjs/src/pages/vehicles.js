@@ -75,10 +75,8 @@ const Vehicles = ({ list }) => {
           </TableBody>
         </Table>
       </TableContainer>
-      <Link href="/">
-        <a>
-          <Button>home</Button>
-        </a>
+      <Link href="/" passHref>
+        <Button>home</Button>
       </Link>
     </>
   );
