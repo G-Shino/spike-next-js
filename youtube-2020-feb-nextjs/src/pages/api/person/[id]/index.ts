@@ -8,12 +8,9 @@ const getPersonById = async (req: NextApiRequest, res: NextApiResponse) => {
     const statement = await db.prepare(
       "UPDATE person SET name = ?, email = ? where id = ?"
     );
-    const result = await statement.run(
-      req.body.name,
-      req.body.email,
-      req.query.id
-    );
-    result.finalize();
+    await statement.run(req.body.name, req.body.email, req.query.id);
+    // メモリリーク帽子のためprepareした実行文をfinalize
+    statement.finalize();
   }
 
   const person = await db.get(`select * from person where id = ?`, [
