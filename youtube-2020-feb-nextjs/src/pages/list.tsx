@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { VehiclePerson } from "../const/types/VehiclePerson";
+import { VehiclePerson } from "../const/types/api";
 
 export interface ListProps {
   ownersList?: VehiclePerson[];

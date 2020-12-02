@@ -7,8 +7,9 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-
 import Button from "@material-ui/core/Button";
+
+import { ResVehicle } from "../const/types/api";
 
 const StyledTableCell = withStyles(theme => ({
   head: {
@@ -28,7 +29,13 @@ const StyledTableRow = withStyles(theme => ({
   }
 }))(TableRow);
 
-function createData(name, calories, fat, carbs, protein) {
+function createData(
+  name: string,
+  calories: number,
+  fat: number,
+  carbs: number,
+  protein: number
+) {
   return { name, calories, fat, carbs, protein };
 }
 
@@ -46,7 +53,7 @@ const useStyles = makeStyles({
   }
 });
 
-const Vehicles = ({ list }) => {
+const Vehicles = ({ list }: { list: ResVehicle[] }) => {
   const classes = useStyles();
 
   return (
