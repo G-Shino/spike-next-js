@@ -55,6 +55,10 @@ const useStyles = makeStyles({
 
 const Vehicles = ({ list }: { list: ResVehicle[] }) => {
   const classes = useStyles();
+  // 権限認証未実装のため
+  if (list.map === undefined) {
+    list = [];
+  }
 
   return (
     <>

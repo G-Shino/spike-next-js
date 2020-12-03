@@ -8,12 +8,11 @@ export const authenticated = (fn: NextApiHandler) => async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {
-  verify(req.headers.authorization!, secret, async (err, decoded) => {
-    if (!err && decoded) {
-      return await fn(req, res);
-    }
-    return res.status(401).json({ message: "sorry you are not authenticated" });
-  });
+  const decoded = verify(req.headers.authorization!, secret);
+  if (decoded) {
+    return await fn(req, res);
+  }
+  return res.status(401).json({ message: "sorry you are not authenticated" });
 };
 
 const getPeople = authenticated(
