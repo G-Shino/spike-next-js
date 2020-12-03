@@ -1,21 +1,19 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 const login = () => {
-  const emailRef = useRef<HTMLInputElement>(null);
-  const passRef = useRef<HTMLInputElement>(null);
-
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const [message, setMessage] = useState<any>(null);
 
   const handleLogin = async () => {
-    console.log(emailRef.current?.value, passRef.current?.value);
     const resp = await fetch("http://localhost:3000/api/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        email: emailRef.current?.value,
-        password: passRef.current?.value
+        email,
+        password
       })
     });
     const json = await resp.json();
@@ -26,8 +24,22 @@ const login = () => {
   return (
     <div>
       <h1>{message && JSON.stringify(message)}</h1>
-      <input type="text" placeholder="email" ref={emailRef} />
-      <input type="password" placeholder="password" ref={passRef} />
+      <input
+        type="text"
+        placeholder="email"
+        value={email}
+        onChange={event => {
+          setEmail(event.target.value);
+        }}
+      />
+      <input
+        type="password"
+        placeholder="password"
+        value={password}
+        onChange={event => {
+          setPassword(event.target.value);
+        }}
+      />
       <button onClick={handleLogin}>Login</button>
     </div>
   );
