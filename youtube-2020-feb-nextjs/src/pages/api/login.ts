@@ -1,8 +1,9 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { openDB } from "@src/lib/openDB";
 import { compare } from "bcrypt";
 import { sign } from "jsonwebtoken";
-import { secret } from "../../const/secret";
+import cookie from "cookie";
+import { secret } from "@src/const/secret";
+import { openDB } from "@src/lib/openDB";
 
 const login = async (req: NextApiRequest, res: NextApiResponse) => {
   const db = await openDB();
@@ -20,7 +21,18 @@ const login = async (req: NextApiRequest, res: NextApiResponse) => {
       const jwt = sign(claims, secret, {
         expiresIn: "1h" // 期限一時間
       });
-      return res.json({ authToken: jwt });
+
+      res.setHeader(
+        "Set-Cookie",
+        cookie.serialize("auth", jwt, {
+          httpOnly: true,
+          secure: process.env.NODE_ENV !== "development",
+          sameSite: "strict",
+          maxAge: 3600,
+          path: "/"
+        })
+      );
+      return res.json({ message: "Welcome back to the page" });
     } else {
       return res.json({ message: "Oops, something went wrong!" });
     }

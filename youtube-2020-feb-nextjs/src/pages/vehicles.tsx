@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { NextPageContext } from "next";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -9,7 +10,8 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 
-import { ResVehicle } from "../const/types/api";
+import { ResVehicle } from "@src/const/types/api";
+import { myGet } from "@src/lib/myGet";
 
 const StyledTableCell = withStyles(theme => ({
   head: {
@@ -95,8 +97,7 @@ const Vehicles = ({ list }: { list: ResVehicle[] }) => {
 
 export default Vehicles;
 
-Vehicles.getInitialProps = async () => {
-  const resp = await fetch("http://localhost:3000/api/vehicles");
-  const json = await resp.json();
+Vehicles.getInitialProps = async (ctx: NextPageContext) => {
+  const json = await myGet("http://localhost:3000/api/vehicles", ctx);
   return { list: json };
 };

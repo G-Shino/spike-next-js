@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { openDB } from "@src/lib/openDB";
-import { authenticated } from "./people";
+import { authenticated } from "@src/lib/authAPI";
 
 const getAllVehicles = authenticated(
   async (req: NextApiRequest, res: NextApiResponse) => {
