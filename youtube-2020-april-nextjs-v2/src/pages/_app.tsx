@@ -2,14 +2,27 @@ import React from "react";
 import PropTypes from "prop-types";
 import Head from "next/head";
 import { AppProps } from "next/app";
+import { Router } from "next/dist/client/router";
 import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
 import theme from "@src/const/theme";
+import Nprogress from "nprogress";
+import "nprogress/nprogress.css";
+
+Nprogress.configure({ showSpinner: false });
+
+Router.events.on("routeChangeStart", () => {
+  console.log("on start");
+  Nprogress.start();
+});
+Router.events.on("routeChangeComplete", () => {
+  console.log("on complete");
+  Nprogress.done();
+});
+Router.events.on("routeChangeError", () => {
+  console.log("on err");
+  Nprogress.done();
+});
 
 export default function MyApp(props: AppProps) {
   const { Component, pageProps } = props;
@@ -40,14 +53,6 @@ export default function MyApp(props: AppProps) {
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-        <AppBar position="static">
-          <Toolbar variant="dense">
-            <IconButton edge="start" color="inherit" aria-label="menu">
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="h6">Microphone Shop</Typography>
-          </Toolbar>
-        </AppBar>
         <Component {...pageProps} />
       </ThemeProvider>
     </React.Fragment>
