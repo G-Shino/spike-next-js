@@ -34,13 +34,19 @@ export const getStaticProps: GetStaticProps<MicrophoneDetail> = async ctx => {
   // +idでstring -> numberにしている
   const microphone = await db.get("SELECT * FROM microphone WHERE id = ?", +id);
   db.close();
+
+  await new Promise(res => setTimeout(res, 5000));
+
   return { props: microphone };
 };
 
 // 動的ルーティングの時に使用　idに入るものを羅列して返却
 export const getStaticPaths: GetStaticPaths<{ id: string }> = async () => {
   const db = await openDB();
-  const microphones: Microphone[] = await db.all("SELECT * FROM microphone");
+  const microphones: Microphone[] = await db.all(
+    "SELECT * FROM microphone LIMIT 5"
+  );
+
   const paths = microphones.map(microphone => {
     return { params: { id: microphone.id.toString() } };
   });
