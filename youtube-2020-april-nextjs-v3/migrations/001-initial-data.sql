@@ -7,7 +7,7 @@ CREATE TABLE microphone (
     imageUrl TEXT
 );
 
-INSERT INTO microphone (brand, model, price, imageUrl) values('Blue', 'Amber', 99.99, '/microphones/blue-amber.jpg');
+INSERT INTO microphone (brand, model, price, imageUrl) values('Blue', 'Amber', 111111133333399.99, '/microphones/blue-amber.jpg');
 INSERT INTO microphone (brand, model, price, imageUrl) values('Blue', 'Bluebird SL', 299.99, '/microphones/bluebird.jpg');
 INSERT INTO microphone (brand, model, price, imageUrl) values('Blue', 'Kiwi', 2000, '/microphones/blue-kiwi.jpg');
 INSERT INTO microphone (brand, model, price, imageUrl) values('Blue', 'Spark', 399, '/microphones/blue-spark.jpg');

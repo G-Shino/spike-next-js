@@ -37,7 +37,7 @@ export const getStaticProps: GetStaticProps<MicrophoneDetail> = async ctx => {
 
   await new Promise(res => setTimeout(res, 5000));
 
-  return { props: microphone };
+  return { props: microphone, revalidate: 3 };
 };
 
 // 動的ルーティングの時に使用　idに入るものを羅列して返却
@@ -54,7 +54,7 @@ export const getStaticPaths: GetStaticPaths<{ id: string }> = async () => {
   // fallback: falseのときはpathsにないものは404 errorに
   // trueのときはrun timeで新たにレンダリングしようとするが、apiアクセスのためのタイムラグがあるので注意
   return {
-    fallback: true,
+    fallback: "blocking",
     paths
   };
 };
