@@ -22,7 +22,7 @@
     "react-scroll": "^1.7.16",
     "react-spring": "9.0.0-beta.34",
     "react-three-fiber": "^4.2.4",
-    "three": "^0.116.1"
+    "three": "^0.137.0"
   },
   "devDependencies": {
     "@emotion/babel-preset-css-prop": "^10.0.27",
